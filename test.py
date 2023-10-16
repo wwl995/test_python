@@ -23,7 +23,9 @@ def process_form():
         result = subprocess.run(c, shell=True, capture_output=True, text=True)
         # 输出命令的输出内容
         print(result.stdout)
-        return result.stdout
+        # 输出错误输出内容
+        print(result.stderr)
+        return result.stdout + result.stderr
 
 if __name__ == '__main__':
     app.run(debug=True)
