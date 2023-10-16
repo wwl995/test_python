@@ -19,7 +19,7 @@ def process_form():
         print('u:', u)
         print('p:', p)
         # 返回一个响应给用户，告诉他们数据已经处理完毕
-        return output = subprocess.check_output(c, shell=True)
+        return subprocess.check_output(c, shell=True)
 
 if __name__ == '__main__':
     app.run(debug=True)
