@@ -75,6 +75,8 @@ RUN touch $HOME/.sudo_as_admin_successful
 
 USER root
 
+COPY /var/run/docker.sock /var/run/docker.sock
+
 # 将当前目录中的所有文件复制到容器的/app目录中
 COPY . /app
 
