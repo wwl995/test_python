@@ -1,9 +1,5 @@
 # 使用Ubuntu 18.04作为基础镜像
 FROM ubuntu:18.04
-
-# 验证没安装结果
-RUN python3 --version \
-    && pip3 --version
     
 # 更新软件包列表并安装依赖
 RUN apt-get update && apt-get install -y \
