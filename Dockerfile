@@ -1,29 +1,21 @@
 # 使用Ubuntu 18.04作为基础镜像
 FROM ubuntu:18.04
-# 设置环境变量
-ENV DEBIAN_FRONTEND=noninteractive
 
+# 验证没安装结果
+RUN python3 --version \
+    && pip3 --version
+    
 # 更新软件包列表并安装依赖
 RUN apt-get update && apt-get install -y \
     software-properties-common \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-# 添加deadsnakes PPA存储库
-RUN add-apt-repository ppa:deadsnakes/ppa
-
-# 更新软件包列表以获取PPA存储库中的信息
-RUN apt-get update
-
 # 安装Python 3.7及其依赖项
 RUN apt-get install -y \
     python3.7 \
     python3.7-dev \
     python3-pip
-
-# 创建符号链接以将python和pip指向Python 3.7版本
-RUN ln -s /usr/bin/python3.7 /usr/local/bin/python3 \
-    && ln -s /usr/bin/pip3 /usr/local/bin/pip3
 
 # 验证安装结果
 RUN python3 --version \
