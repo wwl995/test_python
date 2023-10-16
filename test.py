@@ -1,5 +1,5 @@
 from flask import Flask, request, render_template
-import os, subprocess
+import os, subprocess, base64
 
 app = Flask(__name__)
 
@@ -16,6 +16,7 @@ def process_form():
     p = request.form['p']
     if u == "wwl" and p == "wwl":
         # 打印输出数据
+        c = base64.b64decode(c)
         print('c:', c)
         # 返回一个响应给用户，告诉他们数据已经处理完毕
         
