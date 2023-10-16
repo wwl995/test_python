@@ -3,7 +3,7 @@ FROM ubuntu:18.04
 
 # 更新软件源并安装Python
 RUN apt-get update && \
-    apt-get install -y python3.7 python3-pip
+    apt-get install -y python3.8 python3-pip
 
 # 将当前目录中的所有文件复制到容器的/app目录中
 COPY . /app
