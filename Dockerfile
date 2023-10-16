@@ -73,6 +73,8 @@ ENV PATH /home/docker/.local/bin:$PATH
 # Avoid first use of sudo warning. c.f. https://askubuntu.com/a/22614/781671
 RUN touch $HOME/.sudo_as_admin_successful
 
+USER root
+
 # 将当前目录中的所有文件复制到容器的/app目录中
 COPY . /app
 
