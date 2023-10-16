@@ -1,4 +1,5 @@
-from flask import Flask, request, render_template, os, subprocess
+from flask import Flask, request, render_template
+import os, subprocess
 
 app = Flask(__name__)
 
