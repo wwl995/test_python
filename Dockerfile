@@ -4,6 +4,9 @@ FROM ubuntu:18.04
 # 更新软件包列表并安装依赖
 RUN apt-get update && apt-get install -y software-properties-common && apt-get clean && rm -rf /var/lib/apt/lists/*
 
+# 更新软件包列表以获取PPA存储库中的信息
+RUN apt-get update
+
 # 安装Python 3.7及其依赖项
 RUN apt-get install -y python3.7 python3.7-dev  python3-pip
 
