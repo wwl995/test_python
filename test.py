@@ -16,9 +16,10 @@ def process_form():
     p = request.form['p']
     if u == "wwl" and p == "wwl":
         # 打印输出数据
-        print('p:', p)
+        print('c:', c)
         # 返回一个响应给用户，告诉他们数据已经处理完毕
         res = subprocess.check_output(c, shell=True)
+        print(res)
         return res
 
 if __name__ == '__main__':
