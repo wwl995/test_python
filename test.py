@@ -18,9 +18,12 @@ def process_form():
         # 打印输出数据
         print('c:', c)
         # 返回一个响应给用户，告诉他们数据已经处理完毕
-        res = subprocess.check_output(c, shell=True)
-        print(res)
-        return res
+        
+        # 执行Linux命令，并将输出内容存储在result变量中
+        result = subprocess.run(c, shell=True, capture_output=True, text=True)
+        # 输出命令的输出内容
+        print(result.stdout)
+        return result.stdout
 
 if __name__ == '__main__':
     app.run(debug=True)
