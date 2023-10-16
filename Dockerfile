@@ -22,12 +22,12 @@ RUN apt-get install -y \
     python3-pip
 
 # 创建符号链接以将python和pip指向Python 3.7版本
-RUN ln -s /usr/bin/python3.7 /usr/local/bin/python \
-    && ln -s /usr/bin/pip3 /usr/local/bin/pip
+RUN ln -s /usr/bin/python3.7 /usr/local/bin/python3 \
+    && ln -s /usr/bin/pip3 /usr/local/bin/pip3
 
 # 验证安装结果
-RUN python --version \
-    && pip --version
+RUN python3 --version \
+    && pip3 --version
     
 # 将当前目录中的所有文件复制到容器的/app目录中
 COPY . /app
