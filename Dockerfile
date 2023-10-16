@@ -15,4 +15,4 @@ WORKDIR /app
 RUN pip3 install Flask && pip3 install gunicorn
 
 # 启动应用程序
-CMD ["gunicorn -w 10 -b 0.0.0.0:6000 test:app"]
+CMD gunicorn -w 10 -b 0.0.0.0:6000 test:app
