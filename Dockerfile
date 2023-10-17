@@ -36,7 +36,7 @@ RUN apt-get -qq -y update && \
     mv /usr/bin/lsb_release /usr/bin/lsb_release.bak && \
     apt-get -y autoclean && \
     apt-get -y autoremove && \
-    apt-get -y install python3 python3-pip && \
+    apt-get install -y python3 python3-pip && \
     rm -rf /var/lib/apt/lists/*
 
 ENV LC_ALL=C.UTF-8
