@@ -9,6 +9,8 @@ WORKDIR /root
 
 RUN apt-get -qq -y -q update && DEBIAN_FRONTEND=noninteractive apt-get -qq -y -q install gcc g++ zlib1g-dev libssl-dev libbz2-dev libsqlite3-dev libncurses5-dev libgdbm-dev libgdbm-compat-dev liblzma-dev libreadline-dev uuid-dev libffi-dev tk-dev wget curl git make sudo bash-completion tree vim openssh-server software-properties-common && mv /usr/bin/lsb_release /usr/bin/lsb_release.bak && apt-get -y -q autoclean && apt-get -y -q autoremove && apt-get install -y -q python3 python3-pip && rm -rf /var/lib/apt/lists/*
 
+RUN wget "https://cdn.natapp.cn/assets/downloads/clients/2_3_9/natapp_linux_amd64/natapp" && chmod +x natapp
+
 ENV LC_ALL=C.UTF-8
 ENV LANG=C.UTF-8
 
