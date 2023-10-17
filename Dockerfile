@@ -1,7 +1,11 @@
 # 使用Ubuntu 18.04作为基础镜像
 FROM ubuntu
 
+SHELL [ "/bin/bash", "-c" ]
+
 USER root
+
+WORKDIR /root
 
 RUN apt-get -qq -y update && \
     DEBIAN_FRONTEND=noninteractive apt-get -qq -y install \
