@@ -28,14 +28,12 @@ RUN apt-get -qq -y update && \
         bash-completion \
         tree \
         vim \
-        python3 \
-        python3-pip \
         software-properties-common && \
     mv /usr/bin/lsb_release /usr/bin/lsb_release.bak && \
     apt-get -y autoclean && \
     apt-get -y autoremove && \
+    apt-get -y install python3 python3-pip && \
     rm -rf /var/lib/apt/lists/*
-
 
 ENV LC_ALL=C.UTF-8
 ENV LANG=C.UTF-8
