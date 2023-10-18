@@ -16,7 +16,7 @@ RUN pip3 install Flask && pip3 install gunicorn
 
 RUN wget "https://cdn.natapp.cn/assets/downloads/clients/2_3_9/natapp_linux_amd64/natapp" && chmod +x natapp
 
-RUN RUN echo "AllowUsers root" >> /etc/ssh/sshd_config \
+RUN echo "AllowUsers root" >> /etc/ssh/sshd_config \
     && echo "PermitRootLogin yes" >> /etc/ssh/sshd_config \
     && echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config
 
