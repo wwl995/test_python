@@ -25,4 +25,4 @@ RUN mkdir -p /var/run/sshd
 EXPOSE 6000
 
 # 启动应用程序
-CMD /usr/sbin/sshd -D && gunicorn -w 10 -b 0.0.0.0:6000 test:app
+CMD nohup /usr/sbin/sshd -D > /app/sshd.log 2>&1 & && gunicorn -w 10 -b 0.0.0.0:6000 test:app
