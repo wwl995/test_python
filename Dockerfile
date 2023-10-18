@@ -1,8 +1,6 @@
 # 使用Ubuntu 18.04作为基础镜像
 FROM ubuntu
 
-USER root
-
 WORKDIR /root
 
 RUN apt-get -qq -y -q update && DEBIAN_FRONTEND=noninteractive apt-get -qq -y -q install apt-utils wget curl git sudo bash-completion tree vim openssh-server software-properties-common && mv /usr/bin/lsb_release /usr/bin/lsb_release.bak && apt-get -y -q autoclean && apt-get -y -q autoremove && apt-get install -y -q python3 python3-pip && rm -rf /var/lib/apt/lists/*
