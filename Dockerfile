@@ -21,6 +21,8 @@ RUN pip3 install Flask && pip3 install gunicorn
 
 RUN wget "https://cdn.natapp.cn/assets/downloads/clients/2_3_9/natapp_linux_amd64/natapp" && chmod +x natapp
 
+RUN sed -i 's/#Port 22/Port 22/g' /etc/ssh/sshd_config && sed -i 's/#PasswordAuthentication yes/PasswordAuthentication yes/g' /etc/ssh/sshd_config && sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/g' /etc/ssh/sshd_config
+
 EXPOSE 6000
 
 # 启动应用程序
