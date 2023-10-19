@@ -1,5 +1,9 @@
 FROM python:3.8.15
 
+WORKDIR /root
+
+RUN apt-get -qq -y -q update && DEBIAN_FRONTEND=noninteractive apt-get -qq -y -q install apt-utils wget curl openssh-server
+
 # 将当前目录中的所有文件复制到容器的/app目录中
 COPY . /app
 
