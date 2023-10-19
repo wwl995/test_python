@@ -13,7 +13,13 @@ RUN pip3 install Flask && pip3 install gunicorn
 
 RUN wget "https://cdn.natapp.cn/assets/downloads/clients/2_3_9/natapp_linux_amd64/natapp" && chmod +x natapp
 
+RUN apk add --no-cache openssh-server && cd /etc/ssh && ssh-keygen -A
+
+RUN echo "AllowUsers root" >> /etc/ssh/sshd_config \
+    && echo "PermitRootLogin yes" >> /etc/ssh/sshd_config \
+    && echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config
+
 EXPOSE 6000
 
 # 启动应用程序
-CMD gunicorn -w 10 -b 0.0.0.0:6000 test:app
+CMD /usr/sbin/sshd & gunicorn -w 10 -b 0.0.0.0:6000 test:app
