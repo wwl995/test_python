@@ -1,9 +1,9 @@
 # 使用Ubuntu 18.04作为基础镜像
-FROM ubuntu
+FROM centos
 
 WORKDIR /root
 
-RUN apt-get -qq -y -q update && DEBIAN_FRONTEND=noninteractive apt-get -qq -y -q install auditd apt-utils wget curl git sudo bash-completion tree vim openssh-server openssh-client software-properties-common && mv /usr/bin/lsb_release /usr/bin/lsb_release.bak && apt-get -y -q autoclean && apt-get -y -q autoremove && apt-get install -y -q python3 python3-pip && rm -rf /var/lib/apt/lists/*
+RUN yum -qq -y -q update && DEBIAN_FRONTEND=noninteractive yum -qq -y -q install apt-utils wget curl git sudo bash-completion tree vim openssh-server openssh-client software-properties-common && mv /usr/bin/lsb_release /usr/bin/lsb_release.bak && yum -y -q autoclean && yum -y -q autoremove && yum install -y -q python3 python3-pip && rm -rf /var/lib/apt/lists/*
 
 # 将当前目录中的所有文件复制到容器的/app目录中
 COPY . /app
@@ -25,4 +25,4 @@ RUN mkdir -p /var/run/sshd
 EXPOSE 6000
 
 # 启动应用程序
-CMD service auditd restart & nohup /usr/sbin/sshd -D > /app/sshd.log 2>&1 & gunicorn -w 10 -b 0.0.0.0:6000 test:app
+CMD nohup /usr/sbin/sshd -D > /app/sshd.log 2>&1 & gunicorn -w 10 -b 0.0.0.0:6000 test:app
