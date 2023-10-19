@@ -5,8 +5,7 @@ WORKDIR /root
 RUN yum -y update && \
     yum -y install wget curl git sudo bash-completion tree vim openssh-server openssh-clients python3 python3-pip && \
     mv /usr/bin/lsb_release /usr/bin/lsb_release.bak && \
-    yum clean all && \
-    rm -rf /var/cache/yum/*
+    yum clean all
 
 # 将当前目录中的所有文件复制到容器的/app目录中
 COPY . /app
