@@ -1,4 +1,4 @@
-FROM centos:8 # 将基础镜像更改为 CentOS 8
+FROM centos:8
 
 WORKDIR /root
 
