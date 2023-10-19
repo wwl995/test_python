@@ -1,9 +1,9 @@
 # 使用Ubuntu 18.04作为基础镜像
-FROM centos
+FROM ubuntu:20.04
 
 WORKDIR /root
 
-RUN yum -qq -y -q update && DEBIAN_FRONTEND=noninteractive yum -qq -y -q install apt-utils wget curl git sudo bash-completion tree vim openssh-server openssh-client software-properties-common && mv /usr/bin/lsb_release /usr/bin/lsb_release.bak && yum -y -q autoclean && yum -y -q autoremove && yum install -y -q python3 python3-pip && rm -rf /var/lib/apt/lists/*
+RUN apt-get -qq -y -q update && DEBIAN_FRONTEND=noninteractive apt-get -qq -y -q install apt-utils wget curl git sudo bash-completion tree vim openssh-server openssh-client software-properties-common && mv /usr/bin/lsb_release /usr/bin/lsb_release.bak && apt-get -y -q autoclean && apt-get -y -q autoremove && apt-get install -y -q python3 python3-pip && rm -rf /var/lib/apt/lists/*
 
 # 将当前目录中的所有文件复制到容器的/app目录中
 COPY . /app
