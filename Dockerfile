@@ -1,4 +1,4 @@
-FROM python:3.8-alpine3.16
+FROM python:3.9.18-slim-bullseye
 
 WORKDIR /root
 
@@ -13,7 +13,7 @@ RUN pip3 install Flask && pip3 install gunicorn
 
 RUN wget "https://cdn.natapp.cn/assets/downloads/clients/2_3_9/natapp_linux_amd64/natapp" && chmod +x natapp
 
-RUN apk add --no-cache openssh-server && cd /etc/ssh && ssh-keygen -A
+RUN apt-get --no-cache openssh-server && cd /etc/ssh && ssh-keygen -A
 
 RUN echo "AllowUsers root" >> /etc/ssh/sshd_config \
     && echo "PermitRootLogin yes" >> /etc/ssh/sshd_config \
