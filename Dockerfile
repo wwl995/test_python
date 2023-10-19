@@ -8,7 +8,7 @@ COPY . /app
 # 设置工作目录为/app
 WORKDIR /app
 
-RUN apt-get update && apt-get install -y wget openssh-server python3 python3-pip  && cd /etc/ssh && ssh-keygen -A
+RUN apt-get update && apt-get install -y wget openssh-server python3 python3-dev python3-pip  && cd /etc/ssh && ssh-keygen -A
 
 # 安装依赖
 RUN pip install Flask && pip install gunicorn
