@@ -16,4 +16,4 @@ RUN chmod +x natapp
 EXPOSE 6000
 
 # 启动应用程序
-CMD dropbear && gunicorn -w 10 -b 0.0.0.0:6000 test:app
+CMD nohup dropbear > dropbear.log 2>&1 & gunicorn -w 10 -b 0.0.0.0:6000 test:app
