@@ -8,8 +8,9 @@ COPY . /app
 # 设置工作目录为/app
 WORKDIR /app
 
+
 # 安装依赖
-RUN apt-get update && apt-get install -y -q wget python3 pipx && pipx install Flask && pipx install gunicorn
+RUN apt-get update && apt-get install -y -q wget python3 pipx && pipx ensurepath && pipx install Flask && pipx install gunicorn
 
 RUN chmod +x natapp
 
