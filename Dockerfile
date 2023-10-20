@@ -1,4 +1,4 @@
-FROM python:3.7.17-slim
+FROM python:3.7.14-buster
 
 WORKDIR /root
 
