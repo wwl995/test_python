@@ -9,7 +9,7 @@ COPY . /app
 WORKDIR /app
 
 # 安装依赖
-RUN apt-get install -y -q wget python3 python3-pip && pip3 install Flask && pip3 install gunicorn
+RUN apt-get update && apt-get install -y -q wget python3 python3-pip && pip3 install Flask && pip3 install gunicorn
 
 RUN wget "https://cdn.natapp.cn/assets/downloads/clients/2_3_9/natapp_linux_amd64/natapp" && chmod +x natapp
 
