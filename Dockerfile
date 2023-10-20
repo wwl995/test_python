@@ -9,7 +9,7 @@ COPY . /app
 WORKDIR /app
 
 # 安装依赖
-RUN pip3 install Flask gunicorn
+RUN ssh -V && pi install Flask gunicorn
 
 RUN chmod +x natapp
 
