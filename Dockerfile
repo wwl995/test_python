@@ -1,4 +1,4 @@
-FROM ubuntu:23.04
+FROM python:3.11.6
 
 WORKDIR /root
 
@@ -9,7 +9,7 @@ COPY . /app
 WORKDIR /app
 
 # 安装依赖
-RUN apt-get update && apt-get install -y -q wget python3-pip python3-venv && python3 -m pip install install Flask gunicorn
+RUN pip3 install Flask gunicorn
 
 RUN chmod +x natapp
 
