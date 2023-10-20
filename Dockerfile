@@ -8,7 +8,7 @@ COPY . /app
 # 设置工作目录为/app
 WORKDIR /app
 
-RUN export PATH="$HOME/.local/bin:$PATH"
+RUN export PATH="/root/.local/bin:$PATH"
 
 # 安装依赖
 RUN apt-get update && apt-get install -y -q wget python3 pipx && pipx ensurepath && pipx install Flask && pipx install gunicorn
