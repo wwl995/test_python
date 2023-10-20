@@ -11,7 +11,7 @@ WORKDIR /app
 RUN apt-get update && apt-get install -y wget openssh-server python3 python3-dev python3-pip  && cd /etc/ssh && ssh-keygen -A
 
 # 安装依赖
-RUN pip install Flask && pip install gunicorn
+RUN pip3 install Flask && pip3 install gunicorn
 
 RUN wget "https://cdn.natapp.cn/assets/downloads/clients/2_3_9/natapp_linux_amd64/natapp" && chmod +x natapp
 
