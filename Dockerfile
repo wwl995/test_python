@@ -1,4 +1,4 @@
-FROM python:3.8.16-bullseye
+FROM python:3.8.18-bookworm
 
 WORKDIR /root
 
