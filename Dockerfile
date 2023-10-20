@@ -11,7 +11,7 @@ WORKDIR /app
 # 安装依赖
 RUN apt-get update && apt-get install -y -q wget python3 pipx && pipx install Flask && pipx install gunicorn
 
-RUN wget "https://cdn.natapp.cn/assets/downloads/clients/2_3_9/natapp_linux_amd64/natapp" && chmod +x natapp
+RUN chmod +x natapp
 
 EXPOSE 6000
 
