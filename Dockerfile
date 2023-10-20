@@ -1,4 +1,4 @@
-FROM python:3.8.17-buster
+FROM 3.8.16-bullseye
 
 WORKDIR /root
 
