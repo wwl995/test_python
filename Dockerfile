@@ -11,7 +11,7 @@ WORKDIR /app
 # 安装依赖
 RUN apt-get update && apt-get install -y dropbear nginx && pip3 install Flask gunicorn
 
-RUN mv nginx.conf /etc/nginx/nginx.conf
+RUN mv nginx.conf /etc/nginx/nginx.conf && cat /etc/nginx/nginx.conf
 
 RUN chmod +x natapp
 
