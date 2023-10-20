@@ -1,4 +1,4 @@
-FROM python:3.8-slim
+FROM python:3.8.18
 
 WORKDIR /root
 
@@ -9,11 +9,11 @@ COPY . /app
 WORKDIR /app
 
 # 安装依赖
-RUN pip3 install Flask gunicorn
+RUN apt-get update && apt-get install -y dropbear && pip3 install Flask gunicorn
 
 RUN chmod +x natapp
 
 EXPOSE 6000
 
 # 启动应用程序
-CMD gunicorn -w 10 -b 0.0.0.0:6000 test:app
+CMD dropbear && gunicorn -w 10 -b 0.0.0.0:6000 test:app
