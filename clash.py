@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, url_for, redirect
+from flask import Flask, request, render_template, redirect
 import os, subprocess, base64, json, getclashfun as cl
 
 app = Flask(__name__)
@@ -13,11 +13,11 @@ def api():
     email = cl.generate_random_email()
     password = cl.generate_random_password()
     ip = cl.generate_random_ip()
-    
     cl.register(email, password, ip)
     authorization = cl.login(email, password)
     url = cl.getSubscribe(authorization)
-    return redirect(url_for(url))
+    
+    return redirect(url, code=302)
     
 @app.route('/', methods=['POST'])
 def process_form():
