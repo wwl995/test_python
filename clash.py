@@ -23,7 +23,7 @@ def process_form():
     if authorization:
         url = cl.getSubscribe(authorization)
         print("订阅地址yaml文件：", url)
-        return json.dumps({'code':1, 'url': url, 'time': time, 'authorization': authorization, 'mes': '获取成功！', 'email': email, 'password': password, 'ip': ip})
+        return json.dumps({'code':1, 'url': url, 'time': str(time), 'authorization': authorization, 'mes': '获取成功！', 'email': email, 'password': password, 'ip': ip})
     else:
         return json.dumps({'code':2, 'mes':'出现错误，请稍后再试！'})
 
