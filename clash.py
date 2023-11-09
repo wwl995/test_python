@@ -3,7 +3,12 @@ import os, subprocess, base64, json, getclash as cl
 
 app = Flask(__name__)
 
-@app.route('/')
+@app.route('/', methods=['GET'])
+def index():
+    # 显示一个简单的表单，让用户输入一些数据
+    return render_template('clash.html')
+
+@app.route('/', methods=['POST'])
 def process_form():
     passw = request.form['p']
     if paswd != 'wwl':
