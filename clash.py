@@ -1,5 +1,5 @@
 from flask import Flask, request, render_template
-import os, subprocess, base64, json, getclash as cl
+import os, subprocess, base64, json, getclashfun as cl
 
 app = Flask(__name__)
 
