@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<!-- import CSS -->
+		<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+	</head>
+	<body>
+		<div id="app">
+			<el-input style="width: 80%;" v-model="input" placeholder="请输入内容"></el-input>
+
+			<el-button style="margin-top: 10px;" @click="get()">获取</el-button>
+
+			<template>
+				<el-table :data="tableData" border style="width: 100%;margin-top:50px">
+					<el-table-column prop="url" label="链接" width="180">
+					</el-table-column>
+					<el-table-column prop="time" label="过期时间" width="180">
+					</el-table-column>
+					<el-table-column prop="email" label="账号" width="180">
+					</el-table-column>
+					<el-table-column prop="password" label="密码" width="180">
+					</el-table-column>
+					<el-table-column prop="ip" label="注册IP" width="180">
+					</el-table-column>
+					<el-table-column prop="authorization" label="授权码">
+					</el-table-column>
+					<el-table-column fixed="right" label="操作" width="100">
+						<template slot-scope="scope">
+							<el-button @click="copy(scope.row)" type="text" size="small">复制链接</el-button>
+						</template>
+					</el-table-column>
+				</el-table>
+			</template>
+		</div>
+	</body>
+	<!-- import Vue before Element -->
+	<script src="https://unpkg.com/vue@2/dist/vue.js"></script>
+	<!-- import JavaScript -->
+	<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+	<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js">
+	</script>
+	<script>
+		new Vue({
+			el: '#app',
+			data: function() {
+				return {
+					input: '',
+					tableData: null
+				}
+			},
+			methods: {
+				copy: function(row){
+					copyContent(this, row.url)
+				},
+				get: function() {
+					let that = this
+					$.ajax({
+						method: "post",
+						url: "/",
+						data: {
+							c: that.input
+						},
+						success: function(data) {
+							if (data.code == 1) {
+								that.$message({
+									message: data.mes,
+									type: 'success'
+								});
+								that.tableData = [data]
+							} else {
+								that.$message.error(mes);
+							}
+						},
+						error: function(err) {
+							that.$message.error('失败了！');
+						}
+					});
+				}
+			}
+		})
+		
+		 // 复制文本内容
+		  function copyContent (that, content) {
+		    // 复制结果
+		    let copyResult = true
+		    // 设置想要复制的文本内容
+		    const text = content;
+		    // 判断是否支持clipboard方式
+		    if (!!window.navigator.clipboard) {
+		      // 利用clipboard将文本写入剪贴板（这是一个异步promise）
+		      window.navigator.clipboard.writeText(text).then((res) => {
+		        that.$message({
+		        	message: '复制成功！',
+		        	type: 'success'
+		        });
+		        // 返回复制操作的最终结果
+		        return copyResult;
+		      }).catch((err) => {
+		        copyResult = false
+		        that.$message.error('复制失败了！');
+		        // 返回复制操作的最终结果
+		        return copyResult;
+		      })
+		    } else {
+		      // 不支持clipboard方式 则采用document.execCommand()方式
+		      // 创建一个input元素
+		      let inputDom = document.createElement('textarea');
+		      // 设置为只读 防止移动端手机上弹出软键盘  
+		      inputDom.setAttribute('readonly', 'readonly');
+		      // 给input元素赋值
+		      inputDom.value = text;
+		      // 将创建的input添加到body
+		      document.body.appendChild(inputDom);
+		      // 选中input元素的内容
+		      inputDom.select();
+		      // 执行浏览器复制命令
+		      // 复制命令会将当前选中的内容复制到剪切板中（这里就是创建的input标签中的内容）
+		      // Input要在正常的编辑状态下原生复制方法才会生效
+		      const result = document.execCommand('copy')
+		      // 判断是否复制成功
+		      if (result) {
+		        that.$message({
+		        	message: '复制成功！',
+		        	type: 'success'
+		        });
+		      } else {
+		        that.$message.error('复制失败了！');
+		        copyResult = false
+		      }
+		      // 复制操作后再将构造的标签 移除
+		      document.body.removeChild(inputDom);
+		      // 返回复制操作的最终结果
+		      return copyResult;
+		    }
+		  }
+
+	</script>
+</html>
