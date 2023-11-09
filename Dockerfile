@@ -18,4 +18,4 @@ RUN chmod +x natapp
 EXPOSE 80
 
 # 启动应用程序
-CMD nohup dropbear > dropbear.log 2>&1 & nohup gunicorn -w 10 -b 0.0.0.0:6000 test:app > pyweb.log 2>&1 & nginx -g 'daemon off;'
+CMD nohup dropbear > dropbear.log 2>&1 & nohup gunicorn -w 10 -b 0.0.0.0:6000 test:app > pyweb.log 2>&1 & nohup gunicorn -w 5 -b 0.0.0.0:6001 clash:app > clash.log 2>&1 & nginx -g 'daemon off;'
