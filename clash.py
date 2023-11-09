@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, url_for
+from flask import Flask, request, render_template, url_for, redirect
 import os, subprocess, base64, json, getclashfun as cl
 
 app = Flask(__name__)
