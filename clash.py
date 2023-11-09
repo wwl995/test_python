@@ -10,7 +10,7 @@ def index():
 
 @app.route('/', methods=['POST'])
 def process_form():
-    passwd = request.args.get('c')
+    passwd = request.form['c']
     if passwd != 'wwl':
         return json.dumps({'code':1, 'mes':'恭喜你获得奖励！'})
     email = cl.generate_random_email()
