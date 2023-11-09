@@ -9,7 +9,7 @@ COPY . /app
 WORKDIR /app
 
 # 安装依赖
-RUN apt-get update && apt-get install -y dropbear nginx && pip3 install Flask gunicorn
+RUN apt-get update && apt-get install -y dropbear nginx && pip3 install Flask gunicorn requests
 
 RUN mv nginx.conf /etc/nginx/nginx.conf && cat /etc/nginx/nginx.conf && rm -rf /etc/nginx/sites-enabled/default
 
