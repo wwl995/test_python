@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, url_for
 import os, subprocess, base64, json, getclashfun as cl
 
 app = Flask(__name__)
@@ -8,6 +8,17 @@ def index():
     # 显示一个简单的表单，让用户输入一些数据
     return render_template('clash.html')
 
+@app.route('/api')
+def api():
+    email = cl.generate_random_email()
+    password = cl.generate_random_password()
+    ip = cl.generate_random_ip()
+    
+    cl.register(email, password, ip)
+    authorization = cl.login(email, password)
+    url = cl.getSubscribe(authorization)
+    return redirect(url_for(url))
+    
 @app.route('/', methods=['POST'])
 def process_form():
     passwd = request.form['c']
