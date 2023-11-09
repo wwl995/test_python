@@ -17,7 +17,7 @@ def process_form():
         print("订阅地址yaml文件：", url)
         return json.dumps({code:1, 'url': url, 'time': time, 'authorization': authorization})
     else:
-        return json.dumps({code:2})
+        return json.dumps({code:2, msg:'出现错误，请稍后再试！'})
 
 if __name__ == '__main__':
     app.run(debug=True)
