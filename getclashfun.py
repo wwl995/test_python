@@ -4,9 +4,11 @@ import random
 import string
 from datetime import datetime, timedelta
 
-registerUrl = 'https://www.ckcloud.xyz/api/v1/passport/auth/register'
-loginUrl = 'https://www.ckcloud.xyz/api/v1/passport/auth/login'
-subscribeUrl = 'https://www.ckcloud.xyz/api/v1/user/getSubscribe'
+newhost = requests.get('https://x-zy.shop').url
+
+registerUrl = f'{newhost}/api/v1/passport/auth/register'
+loginUrl = f'{newhost}/api/v1/passport/auth/login'
+subscribeUrl = f'{newhost}/api/v1/user/getSubscribe'
 
 
 def getEXPTime():
