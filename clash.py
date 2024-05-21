@@ -15,7 +15,9 @@ def api():
     ip = cl.generate_random_ip()
     cl.register(email, password, ip)
     authorization = cl.login(email, password)
+    print(authorization)
     url = cl.getSubscribe(authorization)
+    print(url)
     
     return redirect(url, code=302)
     
