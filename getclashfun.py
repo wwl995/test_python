@@ -65,6 +65,7 @@ def getSubscribe(authorization):
     }
 
     subscribeResponse = requests.get(subscribeUrl, headers=subscribeHeaders)
+    print(subscribeResponse)
     return json.loads(subscribeResponse.text).get("data").get("subscribe_url")
 
 
