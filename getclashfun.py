@@ -5,7 +5,7 @@ import string
 from datetime import datetime, timedelta
 
 # newhost = requests.get('https://x-zy.shop').url
-newhost = 'https://2025la.com'
+newhost = requests.get('https://2025la.com').url
 
 registerUrl = f'{newhost}/api/v1/passport/auth/register'
 loginUrl = f'{newhost}/api/v1/passport/auth/login'
